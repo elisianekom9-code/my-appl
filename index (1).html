@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Be Creative — Épanouis-toi, Élève-toi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --violet-deep: #3b0764;
+      --violet-mid: #6d28d9;
+      --violet-soft: #a78bfa;
+      --violet-pale: #ede9fe;
+      --violet-blush: #f5f3ff;
+      --white: #ffffff;
+      --gold: #d4a843;
+      --text-dark: #1e0a30;
+      --text-mid: #4c1d95;
+      --text-light: #7c3aed;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--white);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ===== HEADER / NAV ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(59, 7, 100, 0.95);
+      backdrop-filter: blur(12px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.8rem 4rem;
+      border-bottom: 1px solid rgba(167,139,250,0.2);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 0.8rem;
+      text-decoration: none;
+    }
+    .nav-logo svg { width: 40px; height: 40px; }
+    .nav-logo-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; font-weight: 600;
+      color: var(--white); letter-spacing: 1px;
+    }
+    .nav-logo-text span { color: var(--violet-soft); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.8); text-decoration: none;
+      font-size: 0.9rem; font-weight: 600; letter-spacing: 0.5px;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--violet-soft); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--violet-mid), var(--violet-soft));
+      color: white; border: none; padding: 0.6rem 1.5rem;
+      border-radius: 25px; font-family: 'Nunito', sans-serif;
+      font-weight: 700; font-size: 0.9rem; cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(109,40,217,0.4); }
+
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--violet-deep) 0%, #2e0250 40%, #5b21b6 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden; padding-top: 80px;
+    }
+    .hero-bg-orbs {
+      position: absolute; inset: 0; pointer-events: none;
+    }
+    .orb {
+      position: absolute; border-radius: 50%;
+      background: radial-gradient(circle, rgba(167,139,250,0.15), transparent);
+      animation: float 8s ease-in-out infinite;
+    }
+    .orb1 { width: 500px; height: 500px; top: -100px; right: -100px; animation-delay: 0s; }
+    .orb2 { width: 300px; height: 300px; bottom: 50px; left: -50px; animation-delay: 3s; }
+    .orb3 { width: 200px; height: 200px; top: 40%; left: 20%; animation-delay: 5s; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-30px) scale(1.05); }
+    }
+
+    .hero-content {
+      text-align: center; position: relative; z-index: 2; max-width: 800px; padding: 2rem;
+    }
+    .hero-dove {
+      width: 120px; height: 120px; margin: 0 auto 1.5rem;
+      animation: soar 6s ease-in-out infinite;
+    }
+    @keyframes soar {
+      0%, 100% { transform: translateY(0) rotate(-3deg); }
+      50% { transform: translateY(-20px) rotate(3deg); }
+    }
+    .hero-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 300; color: var(--white);
+      line-height: 1.1; margin-bottom: 1rem;
+    }
+    .hero-tagline em { color: var(--violet-soft); font-style: italic; }
+    .hero-sub {
+      font-size: 1.1rem; color: rgba(255,255,255,0.75);
+      max-width: 550px; margin: 0 auto 2.5rem;
+      line-height: 1.8; font-weight: 300;
+    }
+    .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--violet-soft), var(--gold));
+      color: var(--violet-deep); border: none;
+      padding: 1rem 2.5rem; border-radius: 50px;
+      font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 1rem;
+      cursor: pointer; text-decoration: none; display: inline-block;
+      transition: transform 0.2s, box-shadow 0.3s;
+      box-shadow: 0 0 30px rgba(167,139,250,0.4);
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(167,139,250,0.6); }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid rgba(255,255,255,0.5);
+      color: white; padding: 1rem 2.5rem; border-radius: 50px;
+      font-family: 'Nunito', sans-serif; font-weight: 600; font-size: 1rem;
+      cursor: pointer; text-decoration: none; display: inline-block;
+      transition: all 0.3s;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: white; }
+
+    /* ===== WAVE DIVIDER ===== */
+    .wave { width: 100%; overflow: hidden; line-height: 0; }
+    .wave svg { display: block; }
+
+    /* ===== SECTION STYLES ===== */
+    section { padding: 6rem 2rem; }
+    .section-label {
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--violet-mid);
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 600; color: var(--violet-deep);
+      line-height: 1.2; margin-bottom: 1rem;
+    }
+    .section-desc {
+      font-size: 1rem; color: #6b7280; max-width: 600px;
+      line-height: 1.8; font-weight: 300;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    /* ===== ABOUT ===== */
+    #about { background: var(--violet-blush); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+    }
+    .about-visual {
+      position: relative; height: 420px;
+    }
+    .about-card {
+      position: absolute; background: white;
+      border-radius: 20px; padding: 1.5rem 2rem;
+      box-shadow: 0 20px 60px rgba(109,40,217,0.1);
+    }
+    .about-card.card1 { top: 0; left: 0; right: 60px; }
+    .about-card.card2 { bottom: 0; right: 0; left: 60px; }
+    .card-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--violet-deep); margin-bottom: 0.5rem; }
+    .card-text { font-size: 0.9rem; color: #6b7280; line-height: 1.7; }
+    .about-values { display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; }
+    .value-pill {
+      background: var(--violet-pale);
+      color: var(--violet-mid); padding: 0.4rem 1rem;
+      border-radius: 20px; font-size: 0.85rem; font-weight: 600;
+    }
+
+    /* ===== INSCRIPTION ===== */
+    #inscription { background: white; }
+    .form-card {
+      max-width: 680px; margin: 0 auto;
+      background: var(--violet-blush);
+      border-radius: 28px; padding: 3rem;
+      box-shadow: 0 30px 80px rgba(109,40,217,0.08);
+      border: 1px solid var(--violet-pale);
+    }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group.full { grid-column: 1 / -1; }
+    label {
+      font-size: 0.85rem; font-weight: 700; color: var(--violet-mid);
+      letter-spacing: 0.5px;
+    }
+    input, select, textarea {
+      padding: 0.8rem 1rem; border-radius: 12px;
+      border: 1.5px solid #e5e7eb;
+      background: white; font-family: 'Nunito', sans-serif;
+      font-size: 0.95rem; color: var(--text-dark);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--violet-soft);
+      box-shadow: 0 0 0 3px rgba(167,139,250,0.2);
+    }
+    textarea { resize: vertical; min-height: 100px; }
+    .form-submit {
+      width: 100%; margin-top: 1.5rem;
+      background: linear-gradient(135deg, var(--violet-mid), var(--violet-soft));
+      color: white; border: none; padding: 1rem; border-radius: 14px;
+      font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 1rem;
+      cursor: pointer; transition: transform 0.2s, box-shadow 0.3s;
+    }
+    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(109,40,217,0.3); }
+
+    /* ===== FORUM ===== */
+    #forum { background: var(--violet-blush); }
+    .forum-layout { display: grid; grid-template-columns: 260px 1fr; gap: 2rem; margin-top: 3rem; }
+    .forum-categories { display: flex; flex-direction: column; gap: 0.7rem; }
+    .forum-cat {
+      background: white; border-radius: 14px; padding: 1rem 1.2rem;
+      display: flex; align-items: center; gap: 0.8rem;
+      cursor: pointer; transition: all 0.2s;
+      border: 2px solid transparent;
+    }
+    .forum-cat:hover, .forum-cat.active {
+      border-color: var(--violet-soft);
+      box-shadow: 0 6px 20px rgba(109,40,217,0.12);
+    }
+    .cat-icon { font-size: 1.4rem; }
+    .cat-name { font-weight: 700; font-size: 0.9rem; color: var(--violet-deep); }
+    .cat-count { font-size: 0.75rem; color: #9ca3af; margin-top: 2px; }
+    .forum-posts { display: flex; flex-direction: column; gap: 1rem; }
+    .post-card {
+      background: white; border-radius: 16px; padding: 1.5rem;
+      box-shadow: 0 4px 15px rgba(109,40,217,0.06);
+      cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .post-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(109,40,217,0.12); }
+    .post-header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.8rem; }
+    .avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--violet-soft), var(--gold));
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-weight: 700; font-size: 0.9rem; flex-shrink: 0;
+    }
+    .post-author { font-weight: 700; font-size: 0.9rem; color: var(--violet-deep); }
+    .post-time { font-size: 0.8rem; color: #9ca3af; }
+    .post-title { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.4rem; }
+    .post-preview { font-size: 0.88rem; color: #6b7280; line-height: 1.6; }
+    .post-footer { display: flex; gap: 1.2rem; margin-top: 0.8rem; }
+    .post-stat { font-size: 0.8rem; color: #9ca3af; display: flex; align-items: center; gap: 0.3rem; }
+    .post-tag {
+      margin-left: auto;
+      background: var(--violet-pale); color: var(--violet-mid);
+      padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700;
+    }
+    .new-post-btn {
+      background: linear-gradient(135deg, var(--violet-mid), var(--violet-soft));
+      color: white; border: none; padding: 0.7rem 1.5rem;
+      border-radius: 12px; font-family: 'Nunito', sans-serif;
+      font-weight: 700; font-size: 0.9rem; cursor: pointer; margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.5rem; align-self: flex-start;
+      transition: transform 0.2s;
+    }
+    .new-post-btn:hover { transform: translateY(-2px); }
+
+    /* ===== COACH ===== */
+    #coach { background: white; }
+    .coach-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-top: 3rem; }
+    .coach-profile {
+      background: linear-gradient(135deg, var(--violet-deep), #4c1d95);
+      border-radius: 28px; padding: 3rem; text-align: center; color: white;
+    }
+    .coach-avatar-wrap {
+      width: 110px; height: 110px; margin: 0 auto 1.2rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--violet-soft), var(--gold));
+      padding: 4px;
+    }
+    .coach-avatar-inner {
+      width: 100%; height: 100%; border-radius: 50%;
+      background: var(--violet-deep);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem;
+    }
+    .coach-name { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; margin-bottom: 0.3rem; }
+    .coach-role { color: var(--violet-soft); font-size: 0.9rem; font-weight: 600; letter-spacing: 1px; margin-bottom: 1rem; }
+    .coach-bio { font-size: 0.9rem; color: rgba(255,255,255,0.75); line-height: 1.7; }
+    .coach-badges { display: flex; gap: 0.6rem; justify-content: center; margin-top: 1.2rem; flex-wrap: wrap; }
+    .badge {
+      background: rgba(167,139,250,0.2); border: 1px solid rgba(167,139,250,0.4);
+      color: var(--violet-soft); padding: 0.3rem 0.8rem;
+      border-radius: 20px; font-size: 0.78rem; font-weight: 600;
+    }
+    .coach-chat { display: flex; flex-direction: column; gap: 1rem; }
+    .chat-messages {
+      background: var(--violet-blush); border-radius: 20px; padding: 1.5rem;
+      height: 320px; overflow-y: auto; display: flex; flex-direction: column; gap: 1rem;
+    }
+    .msg { max-width: 80%; }
+    .msg.coach { align-self: flex-start; }
+    .msg.user { align-self: flex-end; }
+    .msg-bubble {
+      padding: 0.8rem 1.1rem; border-radius: 16px;
+      font-size: 0.9rem; line-height: 1.6;
+    }
+    .msg.coach .msg-bubble { background: white; color: var(--text-dark); border-bottom-left-radius: 4px; }
+    .msg.user .msg-bubble { background: var(--violet-mid); color: white; border-bottom-right-radius: 4px; }
+    .msg-time { font-size: 0.72rem; color: #9ca3af; margin-top: 3px; }
+    .chat-input-row { display: flex; gap: 0.8rem; }
+    .chat-input {
+      flex: 1; padding: 0.8rem 1.2rem; border-radius: 50px;
+      border: 1.5px solid #e5e7eb; background: white;
+      font-family: 'Nunito', sans-serif; font-size: 0.9rem; outline: none;
+    }
+    .chat-input:focus { border-color: var(--violet-soft); }
+    .chat-send {
+      background: var(--violet-mid); color: white; border: none;
+      width: 42px; height: 42px; border-radius: 50%; cursor: pointer;
+      font-size: 1.1rem; transition: background 0.2s;
+    }
+    .chat-send:hover { background: var(--violet-deep); }
+    .prayer-btn {
+      background: linear-gradient(135deg, #d4a843, #f59e0b);
+      color: var(--violet-deep); border: none; padding: 0.8rem 1.5rem;
+      border-radius: 12px; font-family: 'Nunito', sans-serif;
+      font-weight: 700; font-size: 0.9rem; cursor: pointer;
+      width: 100%; transition: transform 0.2s;
+    }
+    .prayer-btn:hover { transform: translateY(-2px); }
+
+    /* ===== RENDEZ-VOUS ===== */
+    #rendezvous { background: var(--violet-blush); }
+    .rdv-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem; }
+    .calendar-card {
+      background: white; border-radius: 24px; padding: 2rem;
+      box-shadow: 0 15px 40px rgba(109,40,217,0.08);
+    }
+    .cal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+    .cal-month { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--violet-deep); }
+    .cal-nav button {
+      background: none; border: 1px solid var(--violet-pale);
+      border-radius: 8px; padding: 0.3rem 0.6rem; cursor: pointer; color: var(--violet-mid); font-size: 0.9rem;
+    }
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+    .cal-day-name { text-align: center; font-size: 0.72rem; font-weight: 700; color: #9ca3af; padding: 0.3rem; letter-spacing: 0.5px; }
+    .cal-day {
+      text-align: center; padding: 0.5rem 0.3rem; border-radius: 8px;
+      font-size: 0.85rem; cursor: pointer; color: var(--text-dark);
+      transition: all 0.2s; border: 1px solid transparent;
+    }
+    .cal-day:hover { background: var(--violet-pale); color: var(--violet-mid); }
+    .cal-day.has-event { background: var(--violet-pale); color: var(--violet-mid); font-weight: 700; }
+    .cal-day.selected { background: var(--violet-mid); color: white; }
+    .cal-day.empty { visibility: hidden; }
+    .rdv-list { display: flex; flex-direction: column; gap: 1rem; }
+    .rdv-card {
+      background: white; border-radius: 18px; padding: 1.5rem;
+      box-shadow: 0 8px 25px rgba(109,40,217,0.07);
+      display: flex; gap: 1.2rem; align-items: flex-start;
+    }
+    .rdv-date-box {
+      background: linear-gradient(135deg, var(--violet-mid), var(--violet-soft));
+      color: white; border-radius: 12px; padding: 0.5rem 0.8rem;
+      text-align: center; min-width: 52px; flex-shrink: 0;
+    }
+    .rdv-day { font-size: 1.5rem; font-weight: 700; line-height: 1; }
+    .rdv-month { font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; }
+    .rdv-info { flex: 1; }
+    .rdv-title { font-weight: 700; color: var(--violet-deep); margin-bottom: 0.3rem; }
+    .rdv-detail { font-size: 0.85rem; color: #6b7280; margin-bottom: 0.4rem; }
+    .rdv-type {
+      display: inline-block; font-size: 0.75rem; font-weight: 700;
+      padding: 0.2rem 0.7rem; border-radius: 20px;
+    }
+    .rdv-type.online { background: #d1fae5; color: #065f46; }
+    .rdv-type.physique { background: var(--violet-pale); color: var(--violet-mid); }
+    .rdv-book-btn {
+      background: var(--violet-mid); color: white; border: none;
+      padding: 0.5rem 1rem; border-radius: 10px; font-family: 'Nunito', sans-serif;
+      font-weight: 700; font-size: 0.82rem; cursor: pointer;
+      transition: background 0.2s; flex-shrink: 0;
+    }
+    .rdv-book-btn:hover { background: var(--violet-deep); }
+
+    /* ===== TÉMOIGNAGES ===== */
+    #temoignages { background: linear-gradient(135deg, var(--violet-deep), #4c1d95); padding: 6rem 2rem; }
+    #temoignages .section-label { color: var(--violet-soft); }
+    #temoignages .section-title { color: white; }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .testi-card {
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(167,139,250,0.2);
+      border-radius: 20px; padding: 2rem;
+      backdrop-filter: blur(10px);
+    }
+    .testi-stars { color: var(--gold); font-size: 1rem; margin-bottom: 1rem; }
+    .testi-text { font-size: 0.95rem; color: rgba(255,255,255,0.85); line-height: 1.7; font-style: italic; margin-bottom: 1.5rem; }
+    .testi-author { display: flex; align-items: center; gap: 0.7rem; }
+    .testi-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--violet-soft), var(--gold));
+      display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+    }
+    .testi-name { font-weight: 700; color: white; font-size: 0.9rem; }
+    .testi-city { font-size: 0.78rem; color: rgba(255,255,255,0.5); }
+
+    /* ===== NEWSLETTER ===== */
+    #newsletter { background: white; text-align: center; }
+    .newsletter-card {
+      background: linear-gradient(135deg, var(--violet-pale), #faf5ff);
+      border-radius: 28px; padding: 4rem 3rem; max-width: 600px;
+      margin: 0 auto; border: 1px solid var(--violet-pale);
+    }
+    .newsletter-form { display: flex; gap: 0.8rem; margin-top: 2rem; }
+    .newsletter-input {
+      flex: 1; padding: 0.9rem 1.3rem; border-radius: 50px;
+      border: 1.5px solid #e5e7eb; background: white;
+      font-family: 'Nunito', sans-serif; font-size: 0.95rem; outline: none;
+    }
+    .newsletter-input:focus { border-color: var(--violet-soft); }
+    .newsletter-btn {
+      background: linear-gradient(135deg, var(--violet-mid), var(--violet-soft));
+      color: white; border: none; padding: 0.9rem 1.8rem;
+      border-radius: 50px; font-family: 'Nunito', sans-serif;
+      font-weight: 700; font-size: 0.95rem; cursor: pointer;
+      white-space: nowrap;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--violet-deep); color: rgba(255,255,255,0.7);
+      padding: 4rem 2rem 2rem;
+    }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; max-width: 1200px; margin: 0 auto 3rem; }
+    .footer-brand .nav-logo-text { color: white; }
+    .footer-desc { font-size: 0.88rem; margin-top: 0.8rem; line-height: 1.7; max-width: 240px; }
+    .footer-title { color: white; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.5px; margin-bottom: 1rem; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--violet-soft); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem;
+      text-align: center; font-size: 0.82rem; max-width: 1200px; margin: 0 auto;
+    }
+
+    /* ===== MODAL ===== */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 1000;
+      background: rgba(30,10,48,0.7); backdrop-filter: blur(8px);
+      align-items: center; justify-content: center;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: white; border-radius: 24px; padding: 3rem;
+      max-width: 480px; width: 90%; position: relative;
+      animation: modalIn 0.4s ease;
+    }
+    @keyframes modalIn {
+      from { transform: scale(0.8) translateY(20px); opacity: 0; }
+      to { transform: scale(1) translateY(0); opacity: 1; }
+    }
+    .modal-close {
+      position: absolute; top: 1rem; right: 1rem;
+      background: var(--violet-pale); border: none; border-radius: 50%;
+      width: 32px; height: 32px; font-size: 1rem; cursor: pointer;
+      color: var(--violet-mid);
+    }
+    .modal-title { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--violet-deep); margin-bottom: 0.5rem; }
+    .modal-success { text-align: center; display: none; }
+    .modal-success .success-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .modal-success p { color: var(--violet-mid); font-size: 1rem; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      nav { padding: 0.8rem 1.5rem; }
+      .nav-links { display: none; }
+      .about-grid, .coach-layout, .rdv-layout { grid-template-columns: 1fr; }
+      .forum-layout { grid-template-columns: 1fr; }
+      .forum-categories { flex-direction: row; flex-wrap: wrap; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .newsletter-form { flex-direction: column; }
+    }
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <!-- Dove SVG Logo -->
+    <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#a78bfa"/>
+          <stop offset="100%" stop-color="#6d28d9"/>
+        </radialGradient>
+      </defs>
+      <!-- Dove body -->
+      <ellipse cx="42" cy="44" rx="18" ry="12" fill="white" opacity="0.95"/>
+      <!-- Wing left -->
+      <path d="M24 40 Q12 28 18 20 Q28 32 38 38 Z" fill="white" opacity="0.9"/>
+      <!-- Wing right -->
+      <path d="M56 36 Q70 20 72 28 Q64 36 50 40 Z" fill="white" opacity="0.8"/>
+      <!-- Head -->
+      <circle cx="56" cy="38" r="8" fill="white"/>
+      <!-- Beak -->
+      <path d="M64 38 L70 36 L68 40 Z" fill="#d4a843"/>
+      <!-- Eye -->
+      <circle cx="58" cy="36" r="1.5" fill="#3b0764"/>
+      <!-- Tail feathers -->
+      <path d="M24 50 Q16 56 20 62 Q26 56 30 52 Z" fill="white" opacity="0.85"/>
+      <path d="M28 52 Q22 60 28 65 Q32 58 34 54 Z" fill="white" opacity="0.7"/>
+      <!-- Olive branch -->
+      <path d="M30 56 Q36 52 42 54" stroke="#22c55e" stroke-width="1.5" fill="none"/>
+      <ellipse cx="34" cy="53" rx="3" ry="2" fill="#22c55e" transform="rotate(-20,34,53)"/>
+      <ellipse cx="40" cy="54" rx="3" ry="2" fill="#22c55e" transform="rotate(15,40,54)"/>
+    </svg>
+    <span class="nav-logo-text">Be <span>Creative</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#forum">Forum</a></li>
+    <li><a href="#coach">Coach</a></li>
+    <li><a href="#rendezvous">Rendez-vous</a></li>
+    <li><a href="#temoignages">Témoignages</a></li>
+  </ul>
+  <button class="nav-cta" onclick="openModal()">Rejoindre gratuitement</button>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hero-bg-orbs">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+  </div>
+  <div class="hero-content">
+    <!-- Dove SVG hero -->
+    <svg class="hero-dove" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="glow2">
+          <feGaussianBlur stdDeviation="3" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <!-- Glow circle -->
+      <circle cx="60" cy="60" r="50" fill="rgba(167,139,250,0.1)" filter="url(#glow2)"/>
+      <!-- Dove body -->
+      <ellipse cx="64" cy="66" rx="22" ry="14" fill="white"/>
+      <!-- Wing spread left -->
+      <path d="M42 60 Q20 38 28 24 Q44 44 58 58 Z" fill="white" opacity="0.92"/>
+      <!-- Wing spread right -->
+      <path d="M78 54 Q96 28 106 38 Q90 50 72 60 Z" fill="white" opacity="0.82"/>
+      <!-- Head -->
+      <circle cx="82" cy="56" r="10" fill="white"/>
+      <!-- Beak -->
+      <path d="M92 56 L102 53 L100 59 Z" fill="#d4a843"/>
+      <!-- Eye -->
+      <circle cx="85" cy="53" r="2" fill="#3b0764"/>
+      <circle cx="85.8" cy="52.5" r="0.6" fill="white"/>
+      <!-- Tail -->
+      <path d="M42 72 Q30 82 36 92 Q44 82 50 76 Z" fill="white" opacity="0.9"/>
+      <path d="M48 76 Q38 88 46 96 Q52 84 54 78 Z" fill="white" opacity="0.75"/>
+      <!-- Olive -->
+      <path d="M46 82 Q56 76 64 78" stroke="#4ade80" stroke-width="2" fill="none"/>
+      <ellipse cx="51" cy="77" rx="4" ry="2.5" fill="#4ade80" transform="rotate(-25,51,77)"/>
+      <ellipse cx="60" cy="79" rx="4" ry="2.5" fill="#4ade80" transform="rotate(10,60,79)"/>
+    </svg>
+    <p class="section-label" style="color: var(--violet-soft);">✦ Une communauté pour toi ✦</p>
+    <h1 class="hero-tagline">
+      Découvre ta valeur,<br>
+      <em>Envole-toi vers ton avenir</em>
+    </h1>
+    <p class="hero-sub">
+      Be Creative est un espace bienveillant où les jeunes femmes se retrouvent, 
+      s'épanouissent, et construisent une confiance inébranlable. 
+      Tu n'es jamais seule dans cette aventure.
+    </p>
+    <div class="hero-buttons">
+      <a href="#inscription" class="btn-primary">✨ Je m'inscris gratuitement</a>
+      <a href="#about" class="btn-outline">Découvrir la communauté</a>
+    </div>
+  </div>
+</section>
+
+<!-- Wave -->
+<div class="wave" style="background: linear-gradient(135deg, #2e0250, #5b21b6);">
+  <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#f5f3ff"/>
+  </svg>
+</div>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-card card1">
+          <div class="card-icon">🌸</div>
+          <div class="card-title">Connais-toi toi-même</div>
+          <div class="card-text">Des ateliers et discussions qui t'aident à comprendre tes émotions, tes forces et ta valeur profonde. Tu es plus que tes circonstances.</div>
+        </div>
+        <div class="about-card card2" style="top: 160px;">
+          <div class="card-icon">🦋</div>
+          <div class="card-title">Bâtis ton assurance</div>
+          <div class="card-text">Entourée de sœurs qui t'encouragent et d'un coach dévoué, tu vas développer une confiance qui rayonne de l'intérieur vers l'extérieur.</div>
+        </div>
+        <div class="about-card" style="bottom: 0; left: 20px; right: 40px;">
+          <div class="card-icon">🙏</div>
+          <div class="card-title">Foi & Soutien spirituel</div>
+          <div class="card-text">Un espace de prière et de soutien où tu peux déposer tes fardeaux et recevoir la grâce pour avancer.</div>
+        </div>
+      </div>
+      <div class="reveal" style="transition-delay: 0.2s;">
+        <p class="section-label">Notre mission</p>
+        <h2 class="section-title">Un sanctuaire pour<br>les femmes en devenir</h2>
+        <p class="section-desc" style="margin-bottom: 1.5rem;">
+          Be Creative est né d'un constat simple : trop de jeunes femmes traversent des moments de doute, 
+          de frustration ou de solitude sans avoir un espace sûr pour en parler. Nous créons cet espace.
+        </p>
+        <p class="section-desc">
+          Ici, tu trouveras une communauté qui te comprend, un coach qui te guide, 
+          et des outils concrets pour transformer ta vie. Parce que tu mérites de t'épanouir.
+        </p>
+        <div class="about-values">
+          <span class="value-pill">💜 Bienveillance</span>
+          <span class="value-pill">✨ Croissance</span>
+          <span class="value-pill">🕊️ Paix intérieure</span>
+          <span class="value-pill">🌟 Confiance</span>
+          <span class="value-pill">🤝 Sœurité</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INSCRIPTION ===== -->
+<section id="inscription" style="background: white;">
+  <div class="container" style="text-align: center;">
+    <div class="reveal">
+      <p class="section-label">Rejoins-nous</p>
+      <h2 class="section-title">Créer ton compte gratuitement</h2>
+      <p class="section-desc" style="margin: 0 auto 3rem;">
+        Rejoins des centaines de jeunes femmes qui ont déjà commencé leur transformation. 
+        L'inscription est entièrement gratuite.
+      </p>
+    </div>
+    <div class="form-card reveal" style="transition-delay: 0.2s;">
+      <form id="registerForm" onsubmit="submitForm(event)">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="prenom">Prénom</label>
+            <input type="text" id="prenom" placeholder="Ton prénom" required/>
+          </div>
+          <div class="form-group">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" placeholder="Ton nom de famille"/>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="ton@email.com" required/>
+          </div>
+          <div class="form-group">
+            <label for="age">Tranche d'âge</label>
+            <select id="age">
+              <option value="">Sélectionne...</option>
+              <option>15 - 19 ans</option>
+              <option>20 - 24 ans</option>
+              <option>25 - 30 ans</option>
+              <option>30 - 35 ans</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="ville">Ville / Pays</label>
+            <input type="text" id="ville" placeholder="Ex: Yaoundé, Cameroun"/>
+          </div>
+          <div class="form-group">
+            <label for="domaine">Ce qui t'intéresse</label>
+            <select id="domaine">
+              <option value="">Sélectionne...</option>
+              <option>Développement personnel</option>
+              <option>Relations & Amour</option>
+              <option>Spiritualité & Foi</option>
+              <option>Carrière & Ambition</option>
+              <option>Estime de soi</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label for="message">Partage avec nous (optionnel)</label>
+            <textarea id="message" placeholder="Qu'espères-tu trouver dans cette communauté ?"></textarea>
+          </div>
+        </div>
+        <button type="submit" class="form-submit">🕊️ Rejoindre Be Creative</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FORUM ===== -->
+<section id="forum">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Communauté</p>
+      <h2 class="section-title">Espace d'échange & de partage</h2>
+      <p class="section-desc">Un lieu sûr pour partager tes expériences, poser tes questions et encourager tes sœurs.</p>
+    </div>
+    <div class="forum-layout">
+      <div class="forum-categories reveal">
+        <div class="forum-cat active" onclick="filterForum(this)">
+          <span class="cat-icon">🌸</span>
+          <div>
+            <div class="cat-name">Développement perso</div>
+            <div class="cat-count">142 discussions</div>
+          </div>
+        </div>
+        <div class="forum-cat" onclick="filterForum(this)">
+          <span class="cat-icon">💜</span>
+          <div>
+            <div class="cat-name">Relations & Amour</div>
+            <div class="cat-count">89 discussions</div>
+          </div>
+        </div>
+        <div class="forum-cat" onclick="filterForum(this)">
+          <span class="cat-icon">🙏</span>
+          <div>
+            <div class="cat-name">Foi & Prière</div>
+            <div class="cat-count">67 discussions</div>
+          </div>
+        </div>
+        <div class="forum-cat" onclick="filterForum(this)">
+          <span class="cat-icon">💼</span>
+          <div>
+            <div class="cat-name">Carrière & Ambition</div>
+            <div class="cat-count">54 discussions</div>
+          </div>
+        </div>
+        <div class="forum-cat" onclick="filterForum(this)">
+          <span class="cat-icon">🌟</span>
+          <div>
+            <div class="cat-name">Estime de soi</div>
+            <div class="cat-count">110 discussions</div>
+          </div>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column;">
+        <button class="new-post-btn" onclick="openModal()">
+          ✏️ Nouvelle discussion
+        </button>
+        <div class="forum-posts reveal" style="transition-delay: 0.2s;">
+          <div class="post-card">
+            <div class="post-header">
+              <div class="avatar">A</div>
+              <div>
+                <div class="post-author">Aminata K.</div>
+                <div class="post-time">Il y a 2 heures</div>
+              </div>
+              <span class="post-tag" style="margin-left: auto;">🌸 Perso</span>
+            </div>
+            <div class="post-title">Comment j'ai appris à m'aimer après une rupture difficile</div>
+            <div class="post-preview">Après 3 ans de relation, j'étais perdue. Je veux partager avec vous les étapes qui m'ont aidée à retrouver ma joie et ma valeur...</div>
+            <div class="post-footer">
+              <span class="post-stat">💬 24 réponses</span>
+              <span class="post-stat">❤️ 67 réactions</span>
+              <span class="post-stat">👁️ 203 vues</span>
+            </div>
+          </div>
+          <div class="post-card">
+            <div class="post-header">
+              <div class="avatar" style="background: linear-gradient(135deg, #ec4899, #8b5cf6);">C</div>
+              <div>
+                <div class="post-author">Christelle N.</div>
+                <div class="post-time">Il y a 5 heures</div>
+              </div>
+              <span class="post-tag" style="margin-left: auto; background: #fef3c7; color: #92400e;">🙏 Foi</span>
+            </div>
+            <div class="post-title">Quand Dieu semble silencieux... comment garder la foi ?</div>
+            <div class="post-preview">Je traverse une période sèche dans ma vie spirituelle. Certains matins, je me réveille et je n'ai plus la force de prier. Est-ce que quelqu'un a déjà vécu ça ?</div>
+            <div class="post-footer">
+              <span class="post-stat">💬 41 réponses</span>
+              <span class="post-stat">❤️ 98 réactions</span>
+              <span class="post-stat">👁️ 345 vues</span>
+            </div>
+          </div>
+          <div class="post-card">
+            <div class="post-header">
+              <div class="avatar" style="background: linear-gradient(135deg, #10b981, #3b82f6);">G</div>
+              <div>
+                <div class="post-author">Grace M.</div>
+                <div class="post-time">Hier</div>
+              </div>
+              <span class="post-tag" style="margin-left: auto; background: #dbeafe; color: #1e40af;">💼 Carrière</span>
+            </div>
+            <div class="post-title">J'ai décroché mon premier emploi à 22 ans — voici ce que j'ai appris</div>
+            <div class="post-preview">Après 8 mois de recherche et beaucoup de refus, j'ai enfin eu une opportunité. Je veux partager les stratégies qui ont vraiment changé la donne pour moi...</div>
+            <div class="post-footer">
+              <span class="post-stat">💬 18 réponses</span>
+              <span class="post-stat">❤️ 52 réactions</span>
+              <span class="post-stat">👁️ 178 vues</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COACH ===== -->
+<section id="coach">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Accompagnement</p>
+      <h2 class="section-title">Ton Coach & Espace de Prière</h2>
+      <p class="section-desc">Une guide bienveillante pour répondre à tes questions et intercéder pour toi dans la prière.</p>
+    </div>
+    <div class="coach-layout">
+      <div class="coach-profile reveal">
+        <div class="coach-avatar-wrap">
+          <div class="coach-avatar-inner">🌸</div>
+        </div>
+        <div class="coach-name">Coach Miriam</div>
+        <div class="coach-role">✦ Coach de vie & Conseillère spirituelle ✦</div>
+        <div class="coach-bio">
+          Passionnée par le développement des jeunes femmes, je t'accompagne avec bienveillance 
+          dans ton parcours de découverte de toi-même, de guérison émotionnelle et de croissance spirituelle. 
+          Ensemble, nous allons débloquer ta puissance intérieure.
+        </div>
+        <div class="coach-badges">
+          <span class="badge">🎓 Certifiée Life Coach</span>
+          <span class="badge">🙏 Conseillère spirituelle</span>
+          <span class="badge">💜 5 ans d'expérience</span>
+        </div>
+        <button class="prayer-btn" style="margin-top: 1.5rem;" onclick="requestPrayer()">
+          🙏 Demander une prière spéciale
+        </button>
+      </div>
+      <div class="coach-chat reveal" style="transition-delay: 0.2s;">
+        <div style="font-weight: 700; color: var(--violet-deep); font-size: 1rem; margin-bottom: 0.5rem;">
+          💬 Pose ta question au coach
+        </div>
+        <div class="chat-messages" id="chatMessages">
+          <div class="msg coach">
+            <div class="msg-bubble">
+              Bienvenue, belle âme ! 🌸 Je suis ici pour toi. Qu'est-ce qui te pèse sur le cœur aujourd'hui ?
+            </div>
+            <div class="msg-time">Coach Miriam · maintenant</div>
+          </div>
+          <div class="msg user">
+            <div class="msg-bubble">
+              Bonjour Coach, j'ai du mal à avoir confiance en moi depuis quelque temps...
+            </div>
+            <div class="msg-time">Il y a 2 min</div>
+          </div>
+          <div class="msg coach">
+            <div class="msg-bubble">
+              Merci de me faire confiance avec ça. 💜 La confiance en soi se bâtit comme une maison — une brique à la fois. Commençons par identifier ce qui a ébranlé cette confiance. Est-ce un événement récent ou quelque chose de plus profond ?
+            </div>
+            <div class="msg-time">Coach Miriam · Il y a 1 min</div>
+          </div>
+        </div>
+        <div class="chat-input-row">
+          <input class="chat-input" id="chatInput" placeholder="Écris ton message ici..." onkeypress="if(event.key==='Enter') sendMessage()"/>
+          <button class="chat-send" onclick="sendMessage()">➤</button>
+        </div>
+        <button class="prayer-btn" onclick="requestPrayer()" style="margin-top: 0.8rem;">
+          🙏 Demander une prière pour moi
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RENDEZ-VOUS ===== -->
+<section id="rendezvous">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Agenda</p>
+      <h2 class="section-title">Choisir ton rendez-vous</h2>
+      <p class="section-desc">Rencontres physiques ou en ligne — sélectionne la date qui te convient pour rejoindre nos sessions.</p>
+    </div>
+    <div class="rdv-layout">
+      <div class="reveal">
+        <div class="calendar-card">
+          <div class="cal-header">
+            <div class="cal-month">Avril 2025</div>
+            <div class="cal-nav">
+              <button>◀</button>
+              &nbsp;
+              <button>▶</button>
+            </div>
+          </div>
+          <div class="cal-grid" id="calendar"></div>
+        </div>
+      </div>
+      <div class="reveal" style="transition-delay: 0.2s;">
+        <div style="font-weight: 700; color: var(--violet-deep); margin-bottom: 1rem; font-size: 1rem;">
+          📅 Sessions disponibles
+        </div>
+        <div class="rdv-list">
+          <div class="rdv-card">
+            <div class="rdv-date-box">
+              <div class="rdv-day">05</div>
+              <div class="rdv-month">Avr</div>
+            </div>
+            <div class="rdv-info">
+              <div class="rdv-title">Session : Découverte de soi</div>
+              <div class="rdv-detail">🕐 14h00 - 16h00 · Animée par Coach Miriam</div>
+              <span class="rdv-type online">🌐 En ligne (Zoom)</span>
+            </div>
+            <button class="rdv-book-btn" onclick="bookRdv(this)">Réserver</button>
+          </div>
+          <div class="rdv-card">
+            <div class="rdv-date-box">
+              <div class="rdv-day">12</div>
+              <div class="rdv-month">Avr</div>
+            </div>
+            <div class="rdv-info">
+              <div class="rdv-title">Atelier : Estime & Beauté intérieure</div>
+              <div class="rdv-detail">🕐 10h00 - 13h00 · Yaoundé, Centre Culturel</div>
+              <span class="rdv-type physique">📍 Présentiel</span>
+            </div>
+            <button class="rdv-book-btn" onclick="bookRdv(this)">Réserver</button>
+          </div>
+          <div class="rdv-card">
+            <div class="rdv-date-box">
+              <div class="rdv-day">19</div>
+              <div class="rdv-month">Avr</div>
+            </div>
+            <div class="rdv-info">
+              <div class="rdv-title">Soirée Prière & Témoignages</div>
+              <div class="rdv-detail">🕐 18h00 - 20h00 · Animée par Coach Miriam</div>
+              <span class="rdv-type online">🌐 En ligne (Zoom)</span>
+            </div>
+            <button class="rdv-book-btn" onclick="bookRdv(this)">Réserver</button>
+          </div>
+          <div class="rdv-card">
+            <div class="rdv-date-box">
+              <div class="rdv-day">26</div>
+              <div class="rdv-month">Avr</div>
+            </div>
+            <div class="rdv-info">
+              <div class="rdv-title">Journée Be Creative — Grand rassemblement</div>
+              <div class="rdv-detail">🕐 09h00 - 17h00 · Douala, Hôtel Sawa</div>
+              <span class="rdv-type physique">📍 Présentiel</span>
+            </div>
+            <button class="rdv-book-btn" onclick="bookRdv(this)">Réserver</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TÉMOIGNAGES ===== -->
+<section id="temoignages">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Témoignages</p>
+      <h2 class="section-title">Ce qu'elles disent de nous</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Be Creative m'a donné un espace pour me reconstruire après une longue période de doute. La coach Miriam est exceptionnelle. Pour la première fois, je me sens vraiment moi-même."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">💜</div>
+          <div>
+            <div class="testi-name">Sandra B.</div>
+            <div class="testi-city">Yaoundé, Cameroun</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal" style="transition-delay: 0.15s;">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Les sessions de prière ont transformé ma vie spirituelle. J'ai trouvé ici des sœurs qui me comprennent vraiment. Cette communauté est une vraie bénédiction."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">🌸</div>
+          <div>
+            <div class="testi-name">Fatoumata D.</div>
+            <div class="testi-city">Dakar, Sénégal</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal" style="transition-delay: 0.3s;">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"J'étais frustrée et perdue dans ma vie. En 3 mois avec Be Creative, j'ai retrouvé ma direction, mon sourire et ma confiance. Merci du fond du cœur."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">🦋</div>
+          <div>
+            <div class="testi-name">Nadège A.</div>
+            <div class="testi-city">Abidjan, Côte d'Ivoire</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NEWSLETTER ===== -->
+<section id="newsletter">
+  <div class="container">
+    <div class="newsletter-card reveal">
+      <p class="section-label">Reste connectée</p>
+      <h2 class="section-title" style="margin-bottom: 0.5rem;">Ne manque rien !</h2>
+      <p class="section-desc" style="margin: 0 auto;">Reçois nos inspirations hebdomadaires, les dates des prochaines sessions et des encouragements directs dans ta boîte mail.</p>
+      <div class="newsletter-form">
+        <input class="newsletter-input" type="email" placeholder="Ton adresse email..." id="newsletterEmail"/>
+        <button class="newsletter-btn" onclick="subscribeNewsletter()">S'abonner 🕊️</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.5rem;">
+        <svg width="32" height="32" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="42" cy="44" rx="18" ry="12" fill="white" opacity="0.9"/>
+          <path d="M24 40 Q12 28 18 20 Q28 32 38 38 Z" fill="white" opacity="0.85"/>
+          <path d="M56 36 Q70 20 72 28 Q64 36 50 40 Z" fill="white" opacity="0.75"/>
+          <circle cx="56" cy="38" r="8" fill="white"/>
+          <path d="M64 38 L70 36 L68 40 Z" fill="#d4a843"/>
+          <circle cx="58" cy="36" r="1.5" fill="#3b0764"/>
+        </svg>
+        <span style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:600; color:white;">Be <span style="color:#a78bfa;">Creative</span></span>
+      </div>
+      <div class="footer-desc">Un espace bienveillant pour les jeunes femmes qui veulent grandir, s'épanouir et s'envoler vers leur destin.</div>
+    </div>
+    <div>
+      <div class="footer-title">Navigation</div>
+      <ul class="footer-links">
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#inscription">S'inscrire</a></li>
+        <li><a href="#forum">Forum</a></li>
+        <li><a href="#coach">Coach</a></li>
+        <li><a href="#rendezvous">Rendez-vous</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-title">Communauté</div>
+      <ul class="footer-links">
+        <li><a href="#">Développement perso</a></li>
+        <li><a href="#">Relations & Amour</a></li>
+        <li><a href="#">Foi & Spiritualité</a></li>
+        <li><a href="#">Carrière</a></li>
+        <li><a href="#">Témoignages</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-title">Contact</div>
+      <ul class="footer-links">
+        <li><a href="mailto:contact@becreative.cm">📧 contact@becreative.cm</a></li>
+        <li><a href="#">📱 WhatsApp Community</a></li>
+        <li><a href="#">📘 Facebook</a></li>
+        <li><a href="#">📸 Instagram</a></li>
+        <li><a href="#">🎵 TikTok</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Be Creative — Fait avec 💜 pour toutes les femmes en devenir · Tous droits réservés</p>
+  </div>
+</footer>
+
+<!-- ===== MODAL INSCRIPTION ===== -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModalDirect()">✕</button>
+    <div id="modalFormContent">
+      <div style="text-align:center; margin-bottom:1.5rem;">
+        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🕊️</div>
+        <div class="modal-title">Rejoindre Be Creative</div>
+        <p style="font-size:0.9rem; color:#6b7280;">C'est gratuit et bienveillant !</p>
+      </div>
+      <div class="form-group" style="margin-bottom:1rem;">
+        <label>Prénom</label>
+        <input type="text" id="mPrenom" placeholder="Ton prénom"/>
+      </div>
+      <div class="form-group" style="margin-bottom:1rem;">
+        <label>Email</label>
+        <input type="email" id="mEmail" placeholder="ton@email.com"/>
+      </div>
+      <div class="form-group" style="margin-bottom:1.5rem;">
+        <label>Mot de passe</label>
+        <input type="password" id="mPassword" placeholder="Créer un mot de passe"/>
+      </div>
+      <button class="form-submit" onclick="registerModal()">Créer mon compte 🌸</button>
+    </div>
+    <div class="modal-success" id="modalSuccess">
+      <div class="success-icon">🎉</div>
+      <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; color:var(--violet-deep); margin-bottom:0.5rem;">Bienvenue dans la famille !</h3>
+      <p>Tu fais maintenant partie de la communauté Be Creative. Ton envol commence aujourd'hui. 🕊️</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TOAST ===== -->
+<div id="toast" style="
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 9999;
+  background: var(--violet-mid); color: white;
+  padding: 1rem 1.5rem; border-radius: 14px;
+  font-family: 'Nunito', sans-serif; font-weight: 600;
+  box-shadow: 0 10px 30px rgba(109,40,217,0.3);
+  transform: translateY(100px); opacity: 0;
+  transition: all 0.4s ease; pointer-events: none;
+  max-width: 300px;
+"></div>
+
+<script>
+  // ===== CALENDAR =====
+  function buildCalendar() {
+    const days = ['D','L','M','M','J','V','S'];
+    const events = [5, 12, 19, 26];
+    const grid = document.getElementById('calendar');
+    days.forEach(d => {
+      const el = document.createElement('div');
+      el.className = 'cal-day-name';
+      el.textContent = d;
+      grid.appendChild(el);
+    });
+    // April 2025 starts on Tuesday (offset 2)
+    for(let i = 0; i < 2; i++) {
+      const el = document.createElement('div');
+      el.className = 'cal-day empty';
+      grid.appendChild(el);
+    }
+    for(let i = 1; i <= 30; i++) {
+      const el = document.createElement('div');
+      el.className = 'cal-day' + (events.includes(i) ? ' has-event' : '');
+      el.textContent = i;
+      el.onclick = () => {
+        document.querySelectorAll('.cal-day').forEach(d => d.classList.remove('selected'));
+        el.classList.add('selected');
+      };
+      grid.appendChild(el);
+    }
+  }
+  buildCalendar();
+
+  // ===== SCROLL REVEAL =====
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ===== MODAL =====
+  function openModal() {
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModalDirect() {
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeModal(e) {
+    if(e.target.id === 'modalOverlay') closeModalDirect();
+  }
+  function registerModal() {
+    const p = document.getElementById('mPrenom').value;
+    if(!p) { showToast('❗ Remplis ton prénom !'); return; }
+    document.getElementById('modalFormContent').style.display = 'none';
+    document.getElementById('modalSuccess').style.display = 'block';
+    setTimeout(closeModalDirect, 3000);
+  }
+
+  // ===== TOAST =====
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.style.transform = 'translateY(0)';
+    t.style.opacity = '1';
+    setTimeout(() => {
+      t.style.transform = 'translateY(100px)';
+      t.style.opacity = '0';
+    }, 3500);
+  }
+
+  // ===== FORM SUBMIT =====
+  function submitForm(e) {
+    e.preventDefault();
+    showToast('🎉 Bienvenue dans Be Creative ! Vérifie ton email.');
+    document.getElementById('registerForm').reset();
+  }
+
+  // ===== CHAT =====
+  const responses = [
+    "Merci de partager ça avec moi. 💜 Tu es plus forte que tu ne le penses.",
+    "C'est tout à fait normal de ressentir ça. Parlons-en plus en détail lors d'une session !",
+    "Je t'entends. Dieu ne t'a pas oubliée — souvent le silence est une invitation à aller plus profond.",
+    "Prends le temps de respirer et de te rappeler : tu es précieuse, unique, et capable.",
+    "Je vais prier pour toi avec tout mon cœur. Tu mérites la paix et la joie. 🙏"
+  ];
+  let rIdx = 0;
+  function sendMessage() {
+    const input = document.getElementById('chatInput');
+    const msg = input.value.trim();
+    if(!msg) return;
+    const chat = document.getElementById('chatMessages');
+    // User msg
+    chat.innerHTML += `<div class="msg user"><div class="msg-bubble">${msg}</div><div class="msg-time">Toi · maintenant</div></div>`;
+    input.value = '';
+    chat.scrollTop = chat.scrollHeight;
+    // Coach reply
+    setTimeout(() => {
+      chat.innerHTML += `<div class="msg coach"><div class="msg-bubble">${responses[rIdx % responses.length]}</div><div class="msg-time">Coach Miriam · à l'instant</div></div>`;
+      rIdx++;
+      chat.scrollTop = chat.scrollHeight;
+    }, 1200);
+  }
+
+  // ===== PRAYER =====
+  function requestPrayer() {
+    showToast('🙏 Ta demande de prière a été envoyée au Coach. Elle va intercéder pour toi !');
+  }
+
+  // ===== BOOK =====
+  function bookRdv(btn) {
+    btn.textContent = '✅ Réservé !';
+    btn.style.background = '#22c55e';
+    btn.disabled = true;
+    showToast('📅 Rendez-vous réservé ! Tu recevras un email de confirmation.');
+  }
+
+  // ===== FORUM FILTER =====
+  function filterForum(el) {
+    document.querySelectorAll('.forum-cat').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  // ===== NEWSLETTER =====
+  function subscribeNewsletter() {
+    const email = document.getElementById('newsletterEmail').value;
+    if(!email) { showToast('❗ Saisis ton email !'); return; }
+    showToast('🕊️ Tu es abonnée ! Merci de rejoindre notre communauté.');
+    document.getElementById('newsletterEmail').value = '';
+  }
+</script>
+</body>
+</html>
